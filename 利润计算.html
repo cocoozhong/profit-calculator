@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利润计算器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator-container">
+    <h1>利润计算器</h1>
+
+    <!-- 合并利润计算与汇率计算 -->
+    <div class="section" id="profit-selling-price">
+      <h2>N 点售价</h2>
+      <label for="costRMB">产品人民币成本:</label>
+      <input type="number" id="costRMB" placeholder="Enter RMB Cost">
+
+      <label for="profitMargin">利润点 (%):</label>
+      <input type="number" id="profitMargin" placeholder="Enter Profit Margin">
+
+      <label for="exchangeRate">美金兑人民币汇率:</label>
+      <input type="number" id="exchangeRate" placeholder="Enter Exchange Rate" value="7.0">
+
+      <div class="results">
+        <p>利润: <span id="profit">0 RMB</span></p>
+        <p>人民币售价: <span id="sellingPriceRMB">0 RMB</span></p>
+        <p>美金售价: <span id="sellingPriceUSD">0 USD</span></p>
+      </div>
+    </div>
+
+    <!-- 单独的利润点计算 -->
+    <div class="section" id="profit-margin">
+      <h2>赚几个点</h2>
+      <label for="costRMBForMargin">产品人民币成本:</label>
+      <input type="number" id="costRMBForMargin" placeholder="Enter RMB Cost">
+
+      <label for="sellingPriceRMBForMargin">产品人民币售价:</label>
+      <input type="number" id="sellingPriceRMBForMargin" placeholder="Enter Selling Price RMB">
+
+      <p>利润点: <span id="profitMarginResult">0%</span></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
