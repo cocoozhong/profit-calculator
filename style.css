@@ -1,126 +1,231 @@
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #50c878;
+  --background-color: #f5f7fa;
+  --text-color: #2c3e50;
+  --border-color: #e1e4e8;
+  --hover-color: #357abd;
+  --success-color: #2ecc71;
+}
+
+* {
   margin: 0;
-  background-color: #f2f2f2;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.4;
+  padding: 8px;
 }
 
 .calculator-container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  max-width: 400px;
-  width: 90%;
-  margin: 20px auto;
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-  color: #2c3e50;
+h1 {
   text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+h2 {
+  color: var(--secondary-color);
   margin-bottom: 12px;
-  font-weight: 600;
+  font-size: 1.2em;
+}
+
+h3 {
+  color: var(--text-color);
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.sections-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
 }
 
 .section {
-  margin-bottom: 16px;
+  background: white;
   padding: 12px;
-  border-top: 2px solid #f0f0f0;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
-.section:hover {
-  background-color: #f8f9fa;
+.input-group {
+  margin-bottom: 10px;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  margin: 6px 0 4px;   /* 减小label与输入框之间的间距 */
+  margin-bottom: 4px;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.9em;
 }
 
-input {
+input[type="number"] {
   width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border: 2px solid #e0e0e0;
+  padding: 8px;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  transition: border-color 0.3s ease;
-}
-
-input:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-}
-
-.results p, .section p {
   font-size: 15px;
-  margin: 6px 0;
-  color: #444;
-  line-height: 1.5;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-span {
-  font-weight: 600;
-  color: #2c3e50;
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
-@media screen and (max-width: 480px) {
+/* 移除 number input 的上下箭头 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.results {
+  margin: 12px 0;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding: 6px 8px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-item p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: var(--hover-color);
+}
+
+.clear-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.clear-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.module-history {
+  margin-top: 8px;
+}
+
+.history-item {
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.75em;
+  color: #666;
+  border-left: 2px solid var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 桌面端样式 */
+@media (min-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
   .calculator-container {
-    padding: 15px;
-    width: 95%;
-    margin: 10px auto;
-    border-radius: 8px;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .sections-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.8em;
+    margin-bottom: 20px;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.4em;
   }
 
   .section {
-    padding: 10px;
+    padding: 16px;
+  }
+
+  .input-group {
     margin-bottom: 12px;
   }
 
-  input {
+  label {
+    font-size: 1em;
+  }
+
+  input[type="number"] {
     padding: 10px;
-    font-size: 16px;
   }
 
-  .results p, .section p {
-    font-size: 14px;
+  .result-item p {
+    font-size: 1em;
   }
-}
 
-@media screen and (max-height: 600px) {
-  body {
-    padding: 10px 0;
-    min-height: auto;
-  }
-  
-  .calculator-container {
-    margin: 10px auto;
-  }
-}
-
-@media (hover: none) {
-  input, button {
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .section:hover {
-    background-color: transparent;
-  }
-  
-  input:focus {
-    font-size: 16px;
+  .history-item {
+    font-size: 0.85em;
   }
 }

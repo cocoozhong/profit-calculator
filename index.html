@@ -5,40 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>利润计算器</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="calculator-container">
     <h1>利润计算器</h1>
 
-    <!-- 合并利润计算与汇率计算 -->
-    <div class="section" id="profit-selling-price">
-      <h2>N 点售价</h2>
-      <label for="costRMB">产品人民币成本:</label>
-      <input type="number" id="costRMB" placeholder="Enter RMB Cost">
+    <div class="sections-container">
+      <!-- 合并利润计算与汇率计算 -->
+      <div class="section" id="profit-selling-price">
+        <h2>N 点售价</h2>
+        <div class="input-group">
+          <label for="costRMB">产品人民币成本:</label>
+          <input type="number" id="costRMB" placeholder="Enter RMB Cost">
+        </div>
 
-      <label for="profitMargin">利润点 (%):</label>
-      <input type="number" id="profitMargin" placeholder="Enter Profit Margin">
+        <div class="input-group">
+          <label for="profitMargin">利润点 (%):</label>
+          <input type="number" id="profitMargin" placeholder="Enter Profit Margin">
+        </div>
 
-      <label for="exchangeRate">美金兑人民币汇率:</label>
-      <input type="number" id="exchangeRate" placeholder="Enter Exchange Rate" value="7.0">
+        <div class="input-group">
+          <label for="exchangeRate">美金兑人民币汇率:</label>
+          <input type="number" id="exchangeRate" placeholder="Enter Exchange Rate" value="7.0">
+        </div>
 
-      <div class="results">
-        <p>利润: <span id="profit">0 RMB</span></p>
-        <p>人民币售价: <span id="sellingPriceRMB">0 RMB</span></p>
-        <p>美金售价: <span id="sellingPriceUSD">0 USD</span></p>
+        <div class="results">
+          <div class="result-item">
+            <p>利润: <span id="profit">0 RMB</span></p>
+            <button class="copy-btn" data-target="profit"><i class="fas fa-copy"></i></button>
+          </div>
+          <div class="result-item">
+            <p>人民币售价: <span id="sellingPriceRMB">0 RMB</span></p>
+            <button class="copy-btn" data-target="sellingPriceRMB"><i class="fas fa-copy"></i></button>
+          </div>
+          <div class="result-item">
+            <p>美金售价: <span id="sellingPriceUSD">0 USD</span></p>
+            <button class="copy-btn" data-target="sellingPriceUSD"><i class="fas fa-copy"></i></button>
+          </div>
+        </div>
+        <button class="clear-btn" id="clearProfitSection">清空</button>
+        
+        <!-- N点售价模块的历史记录 -->
+        <div class="module-history">
+          <div id="profitHistoryList"></div>
+        </div>
       </div>
-    </div>
 
-    <!-- 单独的利润点计算 -->
-    <div class="section" id="profit-margin">
-      <h2>赚几个点</h2>
-      <label for="costRMBForMargin">产品人民币成本:</label>
-      <input type="number" id="costRMBForMargin" placeholder="Enter RMB Cost">
+      <!-- 单独的利润点计算 -->
+      <div class="section" id="profit-margin">
+        <h2>赚几个点</h2>
+        <div class="input-group">
+          <label for="costRMBForMargin">产品人民币成本:</label>
+          <input type="number" id="costRMBForMargin" placeholder="Enter RMB Cost">
+        </div>
 
-      <label for="sellingPriceRMBForMargin">产品人民币售价:</label>
-      <input type="number" id="sellingPriceRMBForMargin" placeholder="Enter Selling Price RMB">
+        <div class="input-group">
+          <label for="sellingPriceRMBForMargin">产品人民币售价:</label>
+          <input type="number" id="sellingPriceRMBForMargin" placeholder="Enter Selling Price RMB">
+        </div>
 
-      <p>利润点: <span id="profitMarginResult">0%</span></p>
+        <div class="results">
+          <div class="result-item">
+            <p>利润点: <span id="profitMarginResult">0%</span></p>
+          </div>
+        </div>
+        <button class="clear-btn" id="clearMarginSection">清空</button>
+        
+        <!-- 赚几个点模块的历史记录 -->
+        <div class="module-history">
+          <div id="marginHistoryList"></div>
+        </div>
+      </div>
     </div>
   </div>
 
